@@ -51,13 +51,17 @@ Click on File->New->STM32 Project.
 >**Important:** If there are packages being installed then let them get installed properly/ Agree on if any license agreement.
 # Target selector
 >**Important:** Go to Board Selector and use the search bar and type NUCLEO-F446RE if you are using a nucleo board and STM32F411VET6 if you are using a discovery board
+
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
+
 After selection click on next->Give an appropriate Project name (EX: microros)->Do not change any other option and click on next->Finish.
  >**Note:** For initialize all peripherals with their default mode->Click Yes->Device config editor pop up -> Again click Yes.
+
 An .ioc file would have been loaded where you can configure your STM32 Board Pins.
 Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)
- >**Note:**For the warning that the Pinout configuration will be cleared Click Yes
+ >**Note:** For the warning that the Pinout configuration will be cleared Click Yes
+
 This completes intial setup.
 
 Step 4: Setting up the Pinout configuration
