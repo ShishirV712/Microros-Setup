@@ -130,8 +130,25 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 
 	docker pull microros/micro_ros_static_library_builder:humble && docker run --rm -v ${workspace_loc:/${ProjName}}:/project --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:humble
 
-# Add micro-ROS include directory. 
-** Navigate to C/C++ Build -> Settings -> Tool Settings Tab -> MCU GCC Compiler -> Include paths add**
+# Add micro-ROS include directory
+>**Refer to the image**
+[STM32 Workspace Launch](Images/Stm32.png)
 
-	micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros/include
+**Navigate to C/C++ Build -> Settings -> Tool Settings Tab -> MCU GCC Compiler -> Include paths add and then click on ok**
+
+	../micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros/include
+ 
+# Add the micro-ROS precompiled library.
+>**Refer to the image**
+[STM32 Workspace Launch](Images/Stm32.png)
+
+ **Navigate to C/C++ Build -> Settings -> MCU GCC Linker -> Libraries**
+
+ **Under Library search path(-L) add**
+ 
+ 	../micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros
+ **Under Libraries (-l) add**
+ 
+ 	microros
+ **Click on Apply and for the pop up window click on Rebuild index then you can click on Apply and Close**
 
