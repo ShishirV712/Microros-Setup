@@ -101,7 +101,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 [STM32 Workspace Launch](Images/Stm32.png)
 
 **You will see an Edit Task Pop up-> Change Stack Size (Words) from 128 to 3000-> Then click OK**
->**Important** Make sure the Stack Size(Words) is atleast 
+>**Important** Make sure the Stack Size(Words) is atleast has more than 10 kB 
 
 # Step 5: Microros Integration with CubeIDE
 **Generate the code using Device Configuration Tool Code Generation option (It looks like a golden cog wheel/gear)**
@@ -153,4 +153,14 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
  
  	microros
  **Click on Apply and for the pop up window click on Rebuild index then you can click on Apply and Close**
+# Step 7: Copying extra sources to your project
+**Open files and navigate to the same path where git cloning happend under Step 5**
+
+**You would see a folder with the name micro_ros_stm32cubemx_utils-> extra_sources-> Copy the following:**
+>custom_memory_manager.c
+>microros_allocators.c
+>microros_time.c
+>microros_transports/dma_transport.c
+
+**Now navigate back to your project->Core->Src->Paste the above files here**
 
