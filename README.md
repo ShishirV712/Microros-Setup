@@ -4,7 +4,7 @@ This repository is for microros installation on STM32 Boards(F411/F446RE)
 [Microros Documentation](https://micro.ros.org/docs/tutorials/core/first_application_linux/)
 
 # Step 1:
-Now open a new terminal/terminator and follow these steps
+**Now open a new terminal/terminator and follow these steps**
 # Source the ROS 2 installation
 	source /opt/ros/humble/setup.bash
 	
@@ -39,7 +39,7 @@ Now open a new terminal/terminator and follow these steps
  >**Note:** Ignore the build warnings
 
 # Step 2: 
-Open a new STM32CubeIDE workspace via typing or using browse feature
+**Open a new STM32CubeIDE workspace via typing or using browse feature**
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
 
@@ -50,7 +50,7 @@ Click Launch
 Click on File->New->STM32 Project.
 >**Important:** If there are packages being installed then let them get installed properly/ Agree on if any license agreement.
 # Target selector
->**Important:** Go to Board Selector and use the search bar and type NUCLEO-F446RE if you are using a nucleo board and STM32F411VET6 if you are using a discovery board
+Go to Board Selector and use the search bar and type NUCLEO-F446RE if you are using a nucleo board and STM32F411VET6 if you are using a discovery board
 
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
@@ -64,12 +64,19 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)
 
 This completes intial setup.
 
-Step 4: Setting up the Pinout configuration
-#Clock Configuration this defines the main clock(HSE) for the GPIO Pins/UART Pins and also for the LSE for the Watch dog Timer
-#Advanced info(Skip this):You can change clock settings in the Clock Configurations option where there is an interface to select which clock is used as the main clock (HSE/HSI/PLL) and which mode(Crystal Ceramic Oscillator/RC Oscillator/LC Oscillator) and also frequency can be set using frequency divders and multipliers. 
+# Step 3: Setting up the Pinout configuration
+**We need three things for installing and verifying microros Clock Settings, UART and Debugging**
+# Clock Configuration 
+This defines the main clock(HSE) for the GPIO Pins/UART Pins and also for the LSE for the Watch dog Timer
+>**Note:** Advanced info(Skip this):You can change clock settings in the Clock Configurations option where there is an interface to select which clock is used as the main clock (HSE/HSI/PLL) and which mode(Crystal Ceramic Oscillator/RC Oscillator/LC Oscillator) and also frequency can be set using frequency divders and multipliers.
+ 
 Click on System Core ->RCC-> Select both High Speed External Clock (HSE) and Low Speed External Clock (LSE) as Crystal Ceramic Resonator this sets the main clock at 84MHz(For Nucleo board) and 100MHz(For DISCO Board).
+>**Refer to the image**
+[STM32 Workspace Launch](Images/Stm32.png)
+
 Now again under System Core-> SYS-> Select Debug as Serial Wire,this is just settings for the debugging method(We Have Serial Wire /JTAG options but we are using STLINK Debugger which uses Serial Wire for the debugging purpose).
-To establish UART Communication protocol required for Microros follow these steps:
+# UART Communication Protocol
+**To establish UART Communication protocol required for Microros follow these steps:**
 Now Under Connectivity choose->USART2->Mode as Asynchronous->Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Rx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings change mode from normal to circular.This setting are for receiver. 
 Similarly we are to set it up for transmitter,Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Tx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings set mode as normal.This is the DMA settings.
 Now let us move to NVIC(Nested Vector Interrupt Control) Table settings
