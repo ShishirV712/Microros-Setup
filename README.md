@@ -82,7 +82,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
 
-**Now Under Connectivity choose->USART2->Mode as Asynchronous->Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Rx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings change mode from normal to circular.This setting are for receiver.**
+**Now Under Connectivity choose->USART2->Mode as Asynchronous->Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Rx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings change mode from normal to circular.This setting is for the receiver.**
 >**Important** Make sure under DMA Request Settings change mode from normal to circular for Rx
 
 **Similarly we are to set it up for transmitter,Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Tx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings set mode as normal.**
@@ -91,6 +91,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **These are the DMA settings.**
 # NVIC Settings
 **Now let us move to NVIC(Nested Vector Interrupt Control) Table settings**
+
 **Go to NVIC Settings->Enable the USART2 golbal interrupt.**
 
 # Step 4: Configuring FreeRTOS settings
