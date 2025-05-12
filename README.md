@@ -114,10 +114,15 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 
 **In files Navigate to your STM32 Project (In my case the path is /home/shishir/STM32CubeIDE/workspace_microros/microros/)**
 
-**So the path for you might be /home/<user>/STM32CubeIDE/<workspace_name>/<project_name>/ -> right click on the free space and click on open in terminal**
+**So the path for you might be /home/<user>/STM32CubeIDE/<workspace_name>/<project_name>/ -> right click on the free space and click on open in terminal and clone the repository given below**
 >**Note:** Alternatively it can be done by using the cd CLI to navigate to this path
 
 # Clone the Repository
 	git clone https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git
+ 
+# Setp 6: Adding builds,paths,etc.
+**Go to Project -> Settings -> C/C++ Build -> Settings -> Build Steps Tab and in Pre-build steps add:**
 
+	docker pull microros/micro_ros_static_library_builder:humble && docker run --rm -v ${workspace_loc:/${ProjName}}:/project --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:humble
+ 
 
