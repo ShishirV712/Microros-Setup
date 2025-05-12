@@ -156,10 +156,13 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 # Step 7: Copying extra sources to your project
 **Open files and navigate to the same path where git cloning happend under Step 5**
 
-**You would see a folder with the name micro_ros_stm32cubemx_utils-> extra_sources-> Copy the following:**
+**You would see a folder with the name micro_ros_stm32cubemx_utils-> extra_sources-> Copy the following files:**
 >custom_memory_manager.c
+
 >microros_allocators.c
+
 >microros_time.c
+
 >microros_transports/dma_transport.c
 
 **Now navigate back to your project->Core->Src->Paste the above files here**
