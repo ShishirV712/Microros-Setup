@@ -1,5 +1,5 @@
 # Microros Setup
-This repository is for microros installation on STM32 Boards(F411/F446RE)
+**This repository is for microros installation on STM32 Boards(F411/F446RE)**
 >**Note:** If you have already completed microros installation once then skip step 1. For official documentation click on the below link
 [Microros Documentation](https://micro.ros.org/docs/tutorials/core/first_application_linux/)
 
