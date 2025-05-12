@@ -103,10 +103,12 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **You will see an Edit Task Pop up-> Change Stack Size (Words) from 128 to 3000-> Then click OK**
 >**Important** Make sure the Stack Size(Words) is atleast 
 
-# Step 5: Generate the code using Device Configuration Tool Code Generation option (It looks like a golden cog wheel/gear)
+# Step 5: Microros Integration with CubeIDE
+**Generate the code using Device Configuration Tool Code Generation option (It looks like a golden cog wheel/gear)**
 >**Note:** For the pop up saying open associated prespective click on Yes and for the Warnings in code generations ignore them and click on Yes
 
 **Make sure main.c is loaded properly**
+
 **Now for the official repository click on the following link**
 [Microros Integration with CubeMX/IDE](https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git)
 
