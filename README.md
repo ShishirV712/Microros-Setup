@@ -120,7 +120,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 # Clone the Repository
 	git clone https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git
  
-# Setp 6: Adding builds,paths,etc.
+# Setp 6: Adding Pre-build Command,include directory,precompiled library.
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
 
@@ -134,11 +134,13 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
 
-**Navigate to C/C++ Build -> Settings -> Tool Settings Tab -> MCU GCC Compiler -> Include paths add and then click on ok**
+**Navigate to C/C++ Build -> Settings -> Tool Settings Tab -> MCU GCC Compiler -> Include paths**
+
+**Under Include paths(-l) add the following command and after adding click on ok**
 
 	../micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros/include
  
-# Add the micro-ROS precompiled library.
+# Add the micro-ROS precompiled library
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
 
