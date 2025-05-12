@@ -40,7 +40,9 @@ Now open a new terminal/terminator and follow these steps
 
 # Step 2: 
 Open a new STM32CubeIDE workspace via typing or using browse feature
-![Stm32 new project](Images/Stm32 new project.png)
+>**Refer the below image**
+[STM32 Workspace Launch](Images/Stm32.png)
+
 Click Launch
 >**Important:** Make sure you have logged into your STM32 Account and are connected to a personal Wi-fi
 Click on File->New->STM32 Project
