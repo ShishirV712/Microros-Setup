@@ -166,4 +166,4 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 >microros_transports/dma_transport.c
 
 **Now navigate back to your project->Core->Src->Paste the above files here**
-
+>**Note:** If there where more files inside microros_transports/ other than dma_transport.c then delete the other files after pasting them
