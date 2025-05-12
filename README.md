@@ -3,7 +3,8 @@ This repository is for microros installation on STM32 Boards(F411/F446RE)
 >**Note:** If you have already completed microros installation once then skip step 1. For official documentation click on the below link
 [Microros Documentation](https://micro.ros.org/docs/tutorials/core/first_application_linux/)
 
-Step 2:Now open a new terminal/terminator and follow these steps
+# Step 1:
+Now open a new terminal/terminator and follow these steps
 # Source the ROS 2 installation
 	source /opt/ros/humble/setup.bash
 	
@@ -11,35 +12,37 @@ Step 2:Now open a new terminal/terminator and follow these steps
 	mkdir microros_ws
 	cd microros_ws
 	
-#Make sure you are in the microros_ws directory until it is mentioned to change the directory
-	git clone -b humble https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+>**Warning:** Make sure you are in the microros_ws directory until it is mentioned to change the directory
+
 	
-# Update dependencies using rosdep
+# Clone the repository and update dependencies using rosdep
+	git clone -b humble https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
 	sudo apt update && rosdep update
 	rosdep install --from-paths src --ignore-src -y
 	
 # Install pip
-sudo apt-get install python3-pip
+	sudo apt-get install python3-pip
 
 # Build micro-ROS tools and source them
 	colcon build
 	source install/local_setup.bash
 	
 # Create firmware step
-ros2 run micro_ros_setup create_firmware_ws.sh host
+	ros2 run micro_ros_setup create_firmware_ws.sh host
 
 # Download micro-ROS-Agent packages
-ros2 run micro_ros_setup create_agent_ws.sh
+	ros2 run micro_ros_setup create_agent_ws.sh
 
 # Build step
-ros2 run micro_ros_setup build_agent.sh
-source install/local_setup.bash
-#Ignore the build warnings
+	ros2 run micro_ros_setup build_agent.sh
+	source install/local_setup.bash
+ >**Note:** Ignore the build warnings
 
-Step 3: Open a new STM32CubeIDE workspace via typing or using browse
-Example:/home/shishir/STM32CubeIDE/microros_workspace_nucleo
+# Step 2: 
+Open a new STM32CubeIDE workspace via typing or using browse
+
 Click Launch
-#Make sure you have logged into your STM32 Account and are connected to a personal Wi-fi
+>**Important:** Make sure you have logged into your STM32 Account and are connected to a personal Wi-fi
 Click on File->New->STM32 Project
 #If there are packages being installed then let them get installed properly/ Agree on if any license agreement
 #You will see a target selector pop up 
