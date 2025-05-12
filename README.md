@@ -39,8 +39,8 @@ Now open a new terminal/terminator and follow these steps
  >**Note:** Ignore the build warnings
 
 # Step 2: 
-Open a new STM32CubeIDE workspace via typing or using browse
-
+Open a new STM32CubeIDE workspace via typing or using browse feature
+![STM32 Worksapce Launch](images/Stm32 new project.png)
 Click Launch
 >**Important:** Make sure you have logged into your STM32 Account and are connected to a personal Wi-fi
 Click on File->New->STM32 Project
