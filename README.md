@@ -109,7 +109,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 
 **Make sure main.c is loaded properly**
 
-**Now for the official repository click on the following link**
+>**Note:** Now for the official repository click on the following link
 [Microros Integration with CubeMX/IDE](https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git)
 
 
