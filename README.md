@@ -95,7 +95,13 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **Go to NVIC Settings->Enable the USART2 golbal interrupt.**
 
 # Step 4: Configuring FreeRTOS settings
+**Click on Middleware and Software Packs which is on the left hand side-> Under this click on FREERTOS-> Select CMSIS_V2 for interface**
+**Go to Tasks and Queues and click on the only available task** 
+>**Refer to the image**
+[STM32 Workspace Launch](Images/Stm32.png)
 
+**You will see an Edit Task Pop up-> Change Stack Size (Words) from 128 to 3000**
+>>**Important** Make sure the Stack Size(Words) is atleast 
 
 
 
