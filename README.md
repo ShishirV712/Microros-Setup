@@ -112,4 +112,12 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 >**Note:** Now for the official repository click on the following link
 [Microros Integration with CubeMX/IDE](https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git)
 
+**In files Navigate to your STM32 Project (In my case the path is /home/shishir/STM32CubeIDE/workspace_microros/microros/)**
+
+**So the path for you might be /home/<user>/STM32CubeIDE/<workspace_name>/<project_name>/ -> right click on the free space and click on open in terminal**
+>**Note:** Alternatively it can be done by using the cd CLI to navigate to this path
+
+# Clone the Repository
+	git clone https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git
+
 
