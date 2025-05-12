@@ -65,7 +65,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **This completes intial setup.**
 
 # Step 3: Setting up the Pinout configuration
-**We need three things for installing and verifying microros Clock Settings, UART and Debugging**
+**We need three things for installing and verifying microros which are Clock configuration, Debugging and UART**
 # Clock Configuration 
 **This defines the main clock(HSE) for the GPIO Pins/UART Pins and also for the LSE for the Watch dog Timer**
 >**Note:** Advanced info(feel free to skip this):You can change clock settings in the Clock Configurations option where there is an interface to select which clock is used as the main clock (HSE/HSI/PLL) and which mode(Crystal Ceramic Oscillator/RC Oscillator/LC Oscillator) and also frequency can be set using frequency divders and multipliers.
@@ -74,18 +74,27 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 >**Refer to the image**
 [STM32 Workspace Launch](Images/Stm32.png)
 
+# SYS settings (Debugging)
 **Now again under System Core-> SYS-> Select Debug as Serial Wire,this is just settings for the debugging method(We Have Serial Wire /JTAG options but we are using STLINK Debugger which uses Serial Wire for the debugging purpose).**
 # UART Communication Protocol
 **To establish UART Communication protocol required for Microros follow these steps:**
+# DMA Settings
+>**Refer to the image**
+[STM32 Workspace Launch](Images/Stm32.png)
 
-Now Under Connectivity choose->USART2->Mode as Asynchronous->Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Rx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings change mode from normal to circular.This setting are for receiver. 
-Similarly we are to set it up for transmitter,Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Tx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings set mode as normal.This is the DMA settings.
-Now let us move to NVIC(Nested Vector Interrupt Control) Table settings
-Go to NVIC Settings->Enable the USART2 golbal interrupt.
+**Now Under Connectivity choose->USART2->Mode as Asynchronous->Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Rx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings change mode from normal to circular.This setting are for receiver.**
+>**Important** Make sure under DMA Request Settings change mode from normal to circular for Rx
 
-Step 5: Configuring FreeRTOS settings
+**Similarly we are to set it up for transmitter,Under DMA(Direct Memory Access) Settings->Click on ADD->Select USART2_Tx under the drop down->Set Priority to Very High->Also make sure under DMA Request Settings set mode as normal.**
+>**Important** Make sure under DMA Request Settings change mode is at normal for Tx
 
- 
+**These are the DMA settings.**
+# NVIC Settings
+**Now let us move to NVIC(Nested Vector Interrupt Control) Table settings**
+**Go to NVIC Settings->Enable the USART2 golbal interrupt.**
+
+# Step 4: Configuring FreeRTOS settings
+
 
 
 
