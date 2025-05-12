@@ -121,8 +121,17 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 	git clone https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git
  
 # Setp 6: Adding builds,paths,etc.
-**Go to Project -> Settings -> C/C++ Build -> Settings -> Build Steps Tab and in Pre-build steps add:**
+>**Refer to the image**
+[STM32 Workspace Launch](Images/Stm32.png)
+
+# Add Pre-build Command
+
+**In the Project Explorer window right click on your project ->navigate to 'properties'-> C/C++ Build -> Settings -> Build Steps Tab and in Pre-build steps->Command add the following and click on apply:**
 
 	docker pull microros/micro_ros_static_library_builder:humble && docker run --rm -v ${workspace_loc:/${ProjName}}:/project --env MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library_ide microros/micro_ros_static_library_builder:humble
- 
+
+# Add micro-ROS include directory. 
+** Navigate to C/C++ Build -> Settings -> Tool Settings Tab -> MCU GCC Compiler -> Include paths add**
+
+	micro_ros_stm32cubemx_utils/microros_static_library_ide/libmicroros/include
 
