@@ -168,8 +168,11 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **Now navigate back to your project->Core->Src->Paste the above files here**
 >**Note:** If there where more files inside microros_transports/ other than dma_transport.c delete the other files(it_transport.c,udp_transport.c,usb_cdc_transport.c) after pasting them.
 # Step 8: Building the Project
-**Before Building the Project open a new terminal and run the fllowing command**
+**Before Building the Project open a new terminal and run the following command**
 
 	sudo chmod 666 /var/run/docker.sock
 **Then click on build project which is the hammer icon on the top**
 >**Note:** This build takes approximately 30 to 45 mins and make sure you are connected to private Wi-fi connection
+
+**Make sure that there are no errors present after the build you may have around 48 warnings but you can ignore them**
+# Step 9: 
