@@ -1,5 +1,5 @@
 # Microros Setup
-**This repository is for microros installation on STM32 Boards(F411/F446RE)**
+**This repository is for microros installation on STM32 Boards[F411(DISCOVERY)/F446RE(NUCLEO)]**
 >**Note:** If you have already completed microros installation once then skip step 1. For official documentation click on the below link
 [Microros Documentation](https://micro.ros.org/docs/tutorials/core/first_application_linux/)
 
@@ -174,5 +174,102 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **Then click on build project which is the hammer icon on the top**
 >**Note:** This build takes approximately 30 to 45 mins and make sure you are connected to private Wi-fi connection
 
-**Make sure that there are no errors present after the build you may have around 48 warnings but you can ignore them**
-# Step 9: 
+**Make sure that there are no errors displayed on the console after the build you may have around 48 warnings but you can ignore them**
+**Again build your project but this time the buid should take only few seconds :)**
+
+# Step 9: Create a publisher to test microros
+**After a successful build we can now create a publisher**
+
+**Navigate to the project explorer tab (left hand side) and locate micro_ros_stm32cubemx_utils->sample_main.c**
+
+**From sample_main.c we need to copy the publisher code, but I will try to mention all the code to be copied in this step**
+
+**Copy the following lines and in your main.c file paste it at Private includes line**
+	
+ 	/* Private includes ----------------------------------------------------------*/
+	/* USER CODE BEGIN Includes */
+	#include <rcl/rcl.h>
+	#include <rcl/error_handling.h>
+	#include <rclc/rclc.h>
+	#include <rclc/executor.h>
+	#include <uxr/client/transport.h>
+	#include <rmw_microxrcedds_c/config.h>
+	#include <rmw_microros/rmw_microros.h>
+	#include <std_msgs/msg/int32.h>
+	/* USER CODE END Includes */
+**Copy the following lines and in your main.c file paste it from /* USER CODE BEGIN 4 */ to /* USER CODE END 4 */ line**
+
+	/* USER CODE BEGIN 4 */
+	bool cubemx_transport_open(struct uxrCustomTransport * transport);
+	bool cubemx_transport_close(struct uxrCustomTransport * transport);
+	size_t cubemx_transport_write(struct uxrCustomTransport* transport, const uint8_t * buf, size_t len, uint8_t * err);
+	size_t cubemx_transport_read(struct uxrCustomTransport* transport, uint8_t* buf, size_t len, int timeout, uint8_t* err);
+
+	void * microros_allocate(size_t size, void * state);
+	void microros_deallocate(void * pointer, void * state);
+	void * microros_reallocate(void * pointer, size_t size, void * state);
+	void * microros_zero_allocate(size_t number_of_elements, size_t size_of_element, void * state);
+	/* USER CODE END 4 */
+ **Copy the following lines and in your main.c file paste it inside the void StartDefaultTask(void *argument) function,basically replace the whole content of the function with the following:**
+
+ 	 /* USER CODE BEGIN 5 */
+
+  	// micro-ROS configuration
+
+  	rmw_uros_set_custom_transport(
+    	true,
+    	(void *) &huart2,	//in sample_main.c USART3 is used so they have used &huart3 but make sure that you use &huart2(If usart2 was configured)
+    	cubemx_transport_open,
+    	cubemx_transport_close,
+    	cubemx_transport_write,
+    	cubemx_transport_read);
+
+  	rcl_allocator_t freeRTOS_allocator = rcutils_get_zero_initialized_allocator();
+  	freeRTOS_allocator.allocate = microros_allocate;
+  	freeRTOS_allocator.deallocate = microros_deallocate;
+  	freeRTOS_allocator.reallocate = microros_reallocate;
+  	freeRTOS_allocator.zero_allocate =  microros_zero_allocate;
+
+  	if (!rcutils_set_default_allocator(&freeRTOS_allocator)) {
+      		printf("Error on default allocators (line %d)\n", __LINE__); 
+  	}
+
+  	// micro-ROS app
+
+  	rcl_publisher_t publisher; // This allocates memory to a varible called as publisher
+  	std_msgs__msg__Int32 msg; // msg is of the type std_msgs__msg__Int32
+  	rclc_support_t support; // Contains initialization data
+  	rcl_allocator_t allocator; // Defines how memory will be allocated 
+  	rcl_node_t node; // Represents the ROS 2 node
+
+  	allocator = rcl_get_default_allocator();
+
+  	//create init_options
+  	rclc_support_init(&support, 0, NULL, &allocator);
+
+  	// create node
+ 	 rclc_node_init_default(&node, "cubemx_node", "", &support); // A custom node called as cubemx_node is created
+
+  	// create publisher
+  	rclc_publisher_init_default(
+    	&publisher,
+    	&node,
+    	ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32),
+    	"cubemx_publisher");  // Here the node 'cubemx_node' publishes data->msg of the type Int32 to the topic cubemx_publisher
+
+  	msg.data = 0; // Initialize
+
+  	for(;;)
+  	{
+    	rcl_ret_t ret = rcl_publish(&publisher, &msg, NULL);
+    	if (ret != RCL_RET_OK)
+    	{
+      		printf("Error publishing (line %d)\n", __LINE__); 
+    	}
+    
+    	msg.data++; // Keep increamenting the value
+    	osDelay(10);
+  	}
+  	/* USER CODE END 5 */
+ 
+ 
