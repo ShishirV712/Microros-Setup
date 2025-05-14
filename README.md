@@ -350,7 +350,39 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 
 >[1747247599.551884] info     | ProxyClient.cpp    | create_datareader        | datareader created     | client_key: 0x041835D4, datareader_id: 0x000(6), subscriber_id: 0x000(4)
 
+**Without closing this terminal open a new terminal**
 
+**Here type the following**
+
+	ros2 topic list
+**You would see something like**
+
+**/cubemx_publisher**
+
+**/parameter_events**
+
+**/rosout**
+
+**If this topic is available then your microros installation is correct and the setup is complete /cubemx_publisher**
+
+# FINAL TEST STEP:
+**Run the following line in the second terminal**
+
+	ros2 topic echo /cubemx_publisher
+**If you have an output similar to the following, Congrats you have succefully completed microros installation on an STM32 Board**
+>---
+
+>data: 0
+
+>---
+
+>data: 1
+
+>---
+
+>data: 2
+
+>--- and so on keeps on increamenting
 
 
 
