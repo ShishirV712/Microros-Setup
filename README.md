@@ -271,5 +271,89 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
     	osDelay(10);
   	}
   	/* USER CODE END 5 */
- 
+**Save your main.c file and build it once more, if there are no errors we just have one more step left!**
+
+# Step 10: Verifying and testing the microros publisher(cubemx_publisher) 
+**1)Connect your STM32 Board via an STM32 Cable**
+
+**2)Now click on the drop down option in run button -> Run Configurations-> In the window which just poped up double click on STM32 C/C++ Application**
+
+**3)Now at the top you can see main,debugger,startup,source,common...Click on Debugger->  Make sure the interface is SWD->Tick the checkbox in the ST-LINK S/N option-> Click on scan-> If the borad is detected a random long number must appear (Ex:0668FF3138504B3043032130)-> Click on Apply->Then click on Run**
+
+**4)Your code will be built again then an .elf(executable and linkable format) file would be loaded on to your board**
+>**Important:** Make sure your console has similar lines
+
+>File download complete
+
+>Time elapsed during download operation: 00:00:02.444
+
+>Verifying ...
+
+>Download verified successfully
+
+>Shutting down...
+
+>Exit.
+
+# TTL(Used for USB to UART Translations/Conversions) connections for STM32F411VETx(Discovery Board)
+>**Note:** If you are using a Nucelo Board you can skip this step but this is a compulsary step for the Discovery Boad users
+
+**TTL to STM32 connections are as follows:**
+**1) 5V of TTL to 5V of STM32 / 3.3V of TTL to 3V of STM32**
+**2) GND of TTL to GND STM32**
+**3) Tx of TTL to PA3 of STM32(This would be USART_Rx as the data transmitted from there shall be recieved here)**
+**4) Rx of TTL to PA2 of STM32(This would be USART_Tx as the data recieved there shall be transmitted here)**
+
+# Connectivity to laptop/PC
+**If you are using STM32F446RE(Nucleo Board) the board is capable of performing UART via the STM32 Cable, so there is no need for a TTL. So your PC and board must be connected together via the cable while performing the next part.**
+
+**Whereas if you are using STM32F411VETx(Discovery Board) the board is not capable of performing UART via the STM32 Cable, so there is a need for a TTL. So your PC and board must be connected together via TTL only (disconnect the cable) while performing the next part.**
+>**Note(Only for Discovery Board Users):** While uploading the code you need to make use of the cable(then disconnect it) but while communicating via UART use TTL only.
+
+# Setting up microros_ws
+**Open a new terminal and type the following:**
+	
+ 	cd microros_ws
+  	source install/setup.bash 
+   
+**Now the following steps vary according to the board that you use:**
+# For STM32F446RE(Nucleo Board)
+	ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM0
+# For STM32F411VETx(Discovey Board)
+	ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
+**After running these click on the STM32's reset button (Black push button) you should see the following lines if successful:**
+>[1747247596.587848] info     | TermiosAgentLinux.cpp | init                     | running...             | fd: 3
+
+>[1747247596.588273] info     | Root.cpp           | set_verbose_level        | logger setup           | verbose_level: 4
+
+>[1747247599.389385] info     | Root.cpp           | create_client            | create                 | client_key: 0x041835D4, session_id: 0x81
+
+>[1747247599.389526] info     | SessionManager.hpp | establish_session        | session established    | client_key: 0x041835D4, address: 0
+
+>[1747247599.444861] info     | ProxyClient.cpp    | create_participant       | participant created    | client_key: 0x041835D4, participant_id: 0x000(1)
+
+>[1747247599.460260] info     | ProxyClient.cpp    | create_topic             | topic created          | client_key: 0x041835D4, topic_id: 0x000(2), participant_id: 0x000(1)
+
+>[1747247599.469178] info     | ProxyClient.cpp    | create_publisher         | publisher created      | client_key: 0x041835D4, publisher_id: 0x000(3), participant_id: 0x000(1)
+
+>[1747247599.481051] info     | ProxyClient.cpp    | create_datawriter        | datawriter created     | client_key: 0x041835D4, datawriter_id: 0x000(5), publisher_id: 0x000(3)
+
+>[1747247599.496145] info     | ProxyClient.cpp    | create_topic             | topic created          | client_key: 0x041835D4, topic_id: 0x001(2), participant_id: 0x000(1)
+
+>[1747247599.505438] info     | ProxyClient.cpp    | create_publisher         | publisher created      | client_key: 0x041835D4, publisher_id: 0x001(3), participant_id: 0x000(1)
+
+>[1747247599.516533] info     | ProxyClient.cpp    | create_datawriter        | datawriter created     | client_key: 0x041835D4, datawriter_id: 0x001(5), publisher_id: 0x001(3)
+
+>[1747247599.531101] info     | ProxyClient.cpp    | create_topic             | topic created          | client_key: 0x041835D4, topic_id: 0x002(2), participant_id: 0x000(1)
+
+>[1747247599.540301] info     | ProxyClient.cpp    | create_subscriber        | subscriber created     | client_key: 0x041835D4, subscriber_id: 0x000(4), participant_id: 0x000(1)
+
+>[1747247599.551884] info     | ProxyClient.cpp    | create_datareader        | datareader created     | client_key: 0x041835D4, datareader_id: 0x000(6), subscriber_id: 0x000(4)
+
+
+
+
+
+
+
  
