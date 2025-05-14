@@ -308,7 +308,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 **If you are using STM32F446RE(Nucleo Board) the board is capable of performing UART via the STM32 Cable, so there is no need for a TTL. So your PC and board must be connected together via the cable while performing the next part.**
 
 **Whereas if you are using STM32F411VETx(Discovery Board) the board is not capable of performing UART via the STM32 Cable, so there is a need for a TTL. So your PC and board must be connected together via TTL only (disconnect the cable) while performing the next part.**
->**Note(Only for Discovery Board Users):** While uploading the code you need to make use of the cable(then disconnect it) but while communicating via UART use TTL only.
+>**Note:(Only for Discovery Board Users)** While uploading the code you need to make use of the cable(then disconnect it) but while communicating via UART use TTL only.
 
 # Setting up microros_ws
 **Open a new terminal and type the following:**
@@ -357,11 +357,11 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 	ros2 topic list
 **You would see something like**
 
-**/cubemx_publisher**
+>/cubemx_publisher
 
-**/parameter_events**
+>/parameter_events
 
-**/rosout**
+>/rosout
 
 **If this topic is available then your microros installation is correct and the setup is complete /cubemx_publisher**
 
