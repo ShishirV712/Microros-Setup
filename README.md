@@ -197,7 +197,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 	#include <rmw_microros/rmw_microros.h>
 	#include <std_msgs/msg/int32.h>
 	/* USER CODE END Includes */
-**Copy the following lines and in your main.c file paste it from /* USER CODE BEGIN 4 */ to /* USER CODE END 4 */ line**
+**Copy the following lines and in your main.c file paste it from  USER CODE BEGIN 4  to  USER CODE END 4  line**
 
 	/* USER CODE BEGIN 4 */
 	bool cubemx_transport_open(struct uxrCustomTransport * transport);
@@ -210,7 +210,7 @@ Click on Pinout drop down-> Select Clear Pinouts (or just use shortcut crtl+p)**
 	void * microros_reallocate(void * pointer, size_t size, void * state);
 	void * microros_zero_allocate(size_t number_of_elements, size_t size_of_element, void * state);
 	/* USER CODE END 4 */
- **Copy the following lines and in your main.c file paste it inside the void StartDefaultTask(void *argument) function,basically replace the whole content of the function with the following:**
+***Copy the following lines and in your main.c file paste it inside the void StartDefaultTask(void *argument) function,basically replace the whole content of the function with the following:***
 
  	 /* USER CODE BEGIN 5 */
 
